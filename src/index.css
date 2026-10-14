@@ -1,0 +1,124 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-heading: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    color: #353F4F;
+    background-color: #F8F9FB;
+  }
+
+  h1, h2, h3, h4, h5, h6, .font-heading {
+    font-family: var(--font-heading);
+  }
+}
+
+/* Custom subtle scrollbar and interactive accents */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F1F3F5;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D0D5DD;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #98A2B3;
+}
+
+.subtle-grid {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(53, 63, 79, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(53, 63, 79, 0.035) 1px, transparent 1px);
+}
+
+.subtle-dots {
+  background-image: radial-gradient(rgba(53, 63, 79, 0.08) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Fluid masked text reveal & rotating word animations */
+@keyframes wordSlideIn {
+  0% {
+    transform: translateY(115%);
+    opacity: 0;
+    filter: blur(6px);
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+    filter: blur(0px);
+  }
+}
+
+@keyframes wordSlideOut {
+  0% {
+    transform: translateY(0%);
+    opacity: 1;
+    filter: blur(0px);
+  }
+  100% {
+    transform: translateY(-115%);
+    opacity: 0;
+    filter: blur(6px);
+  }
+}
+
+.animate-word-in {
+  display: inline-block;
+  animation: wordSlideIn 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-word-out {
+  display: inline-block;
+  animation: wordSlideOut 0.48s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Infinite Marquee Animation with Pause on Hover */
+@keyframes marqueeScroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll 45s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee:hover,
+.animate-marquee:focus-within {
+  animation-play-state: paused;
+}
+
+/* 3D Flip Card Support */
+.card-perspective {
+  perspective: 1200px;
+}
+
+.card-preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.card-backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+

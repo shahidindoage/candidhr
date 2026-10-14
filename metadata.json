@@ -1,0 +1,6 @@
+{
+  "name": "Netzur | Next-Gen ISP Billing & Internet Management",
+  "description": "Enterprise-grade billing, subscriber management, and network operations platform for modern Fiber, Wireless, and Municipal ISPs.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
