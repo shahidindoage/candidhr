@@ -124,13 +124,27 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDemo }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         
         {/* Brand Logo */}
-        <Link to="/" className="flex items-center gap-3 shrink-0">
+        {/* <Link to="/" className="l2-brand flex items-center gap-3 shrink-0">
           <img 
-            src="https://res.cloudinary.com/dx6zonqrt/image/upload/v1791892051/hrlogo_v4ojqx.png" 
+            src="https://res.cloudinary.com/dx6zonqrt/image/upload/v1791975517/about_logo-If45L9FG_xv0vpy.png" 
             alt="Netzur Logo" 
             className="h-14 object-contain"
           />
-        </Link>
+          <span>CandidHR.ai</span>
+        </Link> */}
+        
+<Link
+  to="/"
+  className="l2-brand flex items-center gap-2.5 shrink-0 cursor-pointer  text-[17px] font-semibold tracking-[-0.025em] text-black no-underline"
+>
+  <img
+    src="https://res.cloudinary.com/dx6zonqrt/image/upload/v1791975517/about_logo-If45L9FG_xv0vpy.png"
+    alt="CandidHR.ai Logo"
+    className="h-14 w-auto object-contain"
+  />
+  <span>CandidHR.ai</span>
+</Link>
+
 
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center gap-1 text-sm font-semibold text-slate-700">
@@ -400,8 +414,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDemo }) => {
           </a> */}
 
           <Link
-            to="#"
-            className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-[#F13B0A] text-white text-xs font-semibold hover:bg-[#d43105] active:scale-[0.98] transition-all shadow-sm"
+
+            to="#"  
+            className="inline-flex items-center justify-center gap-2 bg-[#111827] hover:bg-black text-white font-semibold py-2.5 px-5 rounded-full shadow-md hover:shadow-lg mb-6 md:m-0"
+            // className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-[#F13B0A]  text-white text-xs font-semibold hover:bg-[#d43105] active:scale-[0.98] transition-all shadow-sm"
+
           >
             <span>Book a Demo</span>
             <ArrowRight className="w-3.5 h-3.5" />

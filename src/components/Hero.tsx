@@ -1,17 +1,17 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { ArrowRight } from 'lucide-react';
+import React, { useState, useEffect, useRef } from "react";
+import { ArrowRight,Building2 } from "lucide-react";
 
 interface HeroProps {
   onOpenDemo: () => void;
 }
 
 const ROTATING_WORDS = [
-  'Your Interview Time!',
-  'A First Interview!',
-  'A Place on Your Shortlist!',
-  'Your Team’s Attention!',
-  'The Next Conversation!',
-  'A Closer Look!',
+  "Your Interview Time!",
+  "A First Interview!",
+  "A Place on Your Shortlist!",
+  "Your Team’s Attention!",
+  "The Next Conversation!",
+  "A Closer Look!",
 ];
 
 export const Hero: React.FC<HeroProps> = ({ onOpenDemo }) => {
@@ -22,17 +22,16 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDemo }) => {
   // Background Canvas Ref
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
-  // Customer names from the CandidHR.ai homepage
-  const brandLogos: { name: string; icon?: string; isSvgImage?: boolean; src?: string }[] = [
-    { name: 'Lumiverse Solutions', icon: '✦' },
-    { name: 'Panchsheel Filters', icon: '◈' },
-    { name: 'Forech India', icon: '◆' },
-    { name: 'Padmini Industries', icon: '✧' },
-    { name: 'Wings Biotech', icon: '∞' },
-    { name: 'QubeHealth Pay', icon: '◿' },
-    { name: 'Vikas Group', icon: '⬡' },
-    { name: 'Monitra Healthcare', icon: '▲' },
-  ];
+const brandLogos = [
+  { name: 'Lumiverse Solutions', icon: 'building-2' },
+  { name: 'Panchsheel Filters', icon: 'building-2' },
+  { name: 'Forech India', icon: 'building-2' },
+  { name: 'Padmini Industries', icon: 'building-2' },
+  { name: 'Wings Biotech', icon: 'building-2' },
+  { name: 'QubeHealth Pay', icon: 'building-2' },
+  { name: 'Vikas Group', icon: 'building-2' },
+  { name: 'Monitra Healthcare', icon: 'building-2' },
+];
 
   // Initial delay reveal
   useEffect(() => {
@@ -63,7 +62,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDemo }) => {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
     let animationFrameId: number;
@@ -75,7 +74,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDemo }) => {
       width = canvas.width = canvas.offsetWidth;
       height = canvas.height = canvas.offsetHeight;
     };
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     const mouse = {
       x: width / 2,
@@ -96,10 +95,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDemo }) => {
       mouse.active = false;
     };
 
-    const sectionElement = document.getElementById('hero-section');
+    const sectionElement = document.getElementById("hero-section");
     if (sectionElement) {
-      sectionElement.addEventListener('mousemove', handleMouseMove);
-      sectionElement.addEventListener('mouseleave', handleMouseLeave);
+      sectionElement.addEventListener("mousemove", handleMouseMove);
+      sectionElement.addEventListener("mouseleave", handleMouseLeave);
     }
 
     const particleCount = Math.floor(Math.min(width, 1200) / 18);
@@ -113,7 +112,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDemo }) => {
       color: string;
     }> = [];
 
-    const colors = ['#F13B0A', '#111827', '#94A3B8', '#F97316'];
+    const colors = ["#F13B0A", "#111827", "#94A3B8", "#F97316"];
 
     for (let i = 0; i < particleCount; i++) {
       particles.push({
@@ -139,7 +138,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDemo }) => {
 
       ctx.beginPath();
       ctx.lineWidth = 1.5;
-      ctx.strokeStyle = 'rgba(241, 59, 10, 0.04)';
+      ctx.strokeStyle = "rgba(241, 59, 10, 0.04)";
 
       for (let i = 0; i < 3; i++) {
         ctx.beginPath();
@@ -173,7 +172,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDemo }) => {
         let alpha = p.baseAlpha;
 
         if (dist < maxDist) {
-          const factor = (1 - dist / maxDist);
+          const factor = 1 - dist / maxDist;
           p.x -= (dx / dist) * factor * 1.5;
           p.y -= (dy / dist) * factor * 1.5;
           alpha = Math.min(1, p.baseAlpha + factor * 0.6);
@@ -195,7 +194,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDemo }) => {
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = '#F13B0A';
+            ctx.strokeStyle = "#F13B0A";
             ctx.globalAlpha = (1 - nDist / 110) * 0.12 * alpha;
             ctx.stroke();
           }
@@ -210,10 +209,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDemo }) => {
 
     return () => {
       cancelAnimationFrame(animationFrameId);
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
       if (sectionElement) {
-        sectionElement.removeEventListener('mousemove', handleMouseMove);
-        sectionElement.removeEventListener('mouseleave', handleMouseLeave);
+        sectionElement.removeEventListener("mousemove", handleMouseMove);
+        sectionElement.removeEventListener("mouseleave", handleMouseLeave);
       }
     };
   }, []);
@@ -228,7 +227,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDemo }) => {
   };
 
   return (
-    <section 
+    <section
       id="hero-section"
       className="relative overflow-hidden bg-white min-h-[calc(100vh-4.5rem)] sm:min-h-[calc(100vh-5rem)] flex flex-col justify-between border-b border-slate-100"
     >
@@ -240,7 +239,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDemo }) => {
       <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-gradient-to-b from-orange-100/40 via-red-50/20 to-transparent blur-3xl pointer-events-none z-0" />
 
       {/* Centered Main Content */}
-      <div className="relative z-10 flex-1 flex flex-col items-center justify-center max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center py-10 sm:py-16">
+      {/* <div className="relative z-10 flex-1 flex flex-col items-center justify-center max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center py-10 sm:py-16">
         <h1 
           className="font-heading font-extrabold text-4xl sm:text-6xl lg:text-[4.65rem] text-slate-900 tracking-tight leading-[1.12] max-w-4xl mx-auto mb-6"
           aria-label="Find the candidates who deserve your interview time."
@@ -284,15 +283,63 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDemo }) => {
             <ArrowRight className="w-4 h-4 text-slate-300 group-hover:translate-x-1 transition-transform duration-200" />
           </button>
         </div>
+      </div> */}
+
+      <div className="relative z-10 flex-1 flex flex-col items-center justify-center max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center py-10 sm:py-16">
+        <h1
+          className="font-heading font-extrabold text-4xl sm:text-6xl lg:text-[4.65rem] text-slate-900 tracking-tight leading-[1.12] max-w-4xl mx-auto mb-6"
+          aria-label="Find the candidates who deserve your interview time."
+        >
+          <span className="block mb-1 sm:mb-2">Find the Candidates</span>
+          <span className="block">
+            <span>Who Deserve </span>
+            <span
+              onClick={handleNextWord}
+              title="Click to switch word"
+              className="inline-block overflow-hidden align-bottom cursor-pointer select-none"
+            >
+              {hasStarted ? (
+                <span
+                  key={`${wordIndex}-${isChanging ? "out" : "in"}`}
+                  className={`${
+                    isChanging ? "animate-word-out" : "animate-word-in"
+                  } text-transparent bg-clip-text bg-gradient-to-br from-[#7076F2] to-[#ba83ece8] hover:opacity-90 transition-opacity relative`}
+                >
+                  {ROTATING_WORDS[wordIndex]}
+                </span>
+              ) : (
+                <span className="opacity-0 inline-block">
+                  {ROTATING_WORDS[0]}
+                </span>
+              )}
+            </span>
+          </span>
+        </h1>
+
+        <p className="text-base sm:text-lg text-slate-600 max-w-xl mx-auto leading-relaxed mb-10 font-normal backdrop-blur-[2px] bg-white/30 rounded-lg py-1 px-2">
+          CandidHR.ai sources, screens, assesses and interviews candidates
+          before your team spends time on the first round — so recruiters can
+          focus on the people worth talking to.
+        </p>
+
+        <div>
+          <button
+            onClick={onOpenDemo}
+            className="inline-flex items-center justify-center gap-2.5 px-9 py-4 rounded-full bg-[#111827] hover:bg-black text-white text-base font-semibold tracking-wide shadow-md hover:shadow-2xl hover:scale-[1.02] active:scale-95 transition-all cursor-pointer group backdrop-blur-xs"
+          >
+            <span>Book a Demo</span>
+            <ArrowRight className="w-4 h-4 text-slate-300 group-hover:translate-x-1 transition-transform duration-200" />
+          </button>
+        </div>
       </div>
 
       {/* Customer strip */}
       <div className="relative z-10 w-full pb-8 sm:pb-12 pt-6 border-t border-slate-100/80 bg-white/60 backdrop-blur-xs">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10 lg:gap-12 opacity-60 hover:opacity-100 transition-opacity duration-300">
-            {brandLogos.map((logo, idx) => (
-              <div 
-                key={idx} 
+            {/* {brandLogos.map((logo, idx) => (
+              <div
+                key={idx}
                 className="flex items-center gap-1.5 text-slate-600 font-semibold text-xs sm:text-sm tracking-tight select-none"
               >
                 {logo.isSvgImage ? (
@@ -303,16 +350,33 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDemo }) => {
                   />
                 ) : (
                   <>
-                    {logo.icon && <span className="font-mono text-xs opacity-75">{logo.icon}</span>}
+                    {logo.icon && (
+                      <span className="font-mono text-xs opacity-75">
+                        {logo.icon}
+                      </span>
+                    )}
                     <span>{logo.name}</span>
                   </>
                 )}
               </div>
-            ))}
+            ))} */}
+            
+{brandLogos.map((logo, idx) => (
+  <div
+    key={idx}
+    className="flex items-center gap-1.5 text-slate-600 font-semibold text-xs sm:text-sm tracking-tight select-none"
+  >
+    <Building2
+      className="w-3.5 h-3.5 shrink-0"
+      aria-hidden="true"
+    />
+    <span>{logo.name}</span>
+  </div>
+))}
+
           </div>
         </div>
       </div>
-
     </section>
   );
 };
