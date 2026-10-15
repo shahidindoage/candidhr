@@ -3,6 +3,7 @@ import { LogoMarquee } from '../components/LogoMarquee';
 import { StatsBanner } from '../components/StatsBanner';
 import { FeatureDeepDives } from '../components/FeatureDeepDives';
 import { IspSolutionsGrid } from '../components/IspSolutionsGrid';
+import { AiJobCreation } from '../components/AiJobCreation';
 import { RoiCalculator } from '../components/RoiCalculator';
 import { WhyNetzur } from '../components/WhyNetzur';
 import { HowItWorks } from '../components/HowItWorks';
@@ -34,6 +35,9 @@ export default function Home1() {
 
       {/* 5. Solutions in Action */}
       <IspSolutionsGrid  />
+
+      {/* 6. AI Job Creation */}
+      <AiJobCreation />
 
       {/* 6. Interactive ROI & Unbilled Revenue Leakage Calculator */}
       {/* <RoiCalculator onOpenDemo={onOpenDemo} /> */}

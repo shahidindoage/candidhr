@@ -26,7 +26,7 @@ export const IspSolutionsGrid: React.FC = () => {
         className="absolute -top-32 left-1/2 -translate-x-1/2 w-[680px] h-[360px] bg-gradient-to-b from-[#7076F2]/12 to-transparent blur-3xl pointer-events-none"
       />
 
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center">
           <div className="text-xs font-extrabold uppercase tracking-widest text-[#7076F2]">
             Candidate Sourcing
