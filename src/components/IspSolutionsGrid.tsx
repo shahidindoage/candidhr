@@ -21,19 +21,15 @@ const ITEMS = [
 export const IspSolutionsGrid: React.FC = () => {
   return (
     <section id="solutions" className="relative py-20 sm:py-28 bg-white border-b border-slate-200 overflow-hidden">
-      <div
-        aria-hidden="true"
-        className="absolute -top-32 left-1/2 -translate-x-1/2 w-[680px] h-[360px] bg-gradient-to-b from-[#7076F2]/12 to-transparent blur-3xl pointer-events-none"
-      />
+      
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl mx-auto text-center">
+        <div className="max-w-3xl">
           <div className="text-xs font-extrabold uppercase tracking-widest text-[#7076F2]">
             Candidate Sourcing
           </div>
-          <h2 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-[2.75rem] text-[#110b2d] tracking-tight mt-3">
-            No applicants yet?{" "}
-            <span className="text-[#5a60e0]">Bring the right people in</span>
+          <h2 className="font-heading font-extrabold  text-2xl sm:text-4xl md:text-[2.6rem] lg:text-[2.85rem] text-[#110b2d] tracking-tight mt-3">
+            Bring the right people in
           </h2>
           <p className="text-sm sm:text-base text-slate-600 leading-relaxed mt-4">
             Source candidates from a large talent pool &ndash; or invite an

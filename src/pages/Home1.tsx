@@ -4,6 +4,7 @@ import { StatsBanner } from '../components/StatsBanner';
 import { FeatureDeepDives } from '../components/FeatureDeepDives';
 import { IspSolutionsGrid } from '../components/IspSolutionsGrid';
 import { AiJobCreation } from '../components/AiJobCreation';
+import { CandidateEvaluation } from '../components/CandidateEvaluation';
 import { RoiCalculator } from '../components/RoiCalculator';
 import { WhyNetzur } from '../components/WhyNetzur';
 import { HowItWorks } from '../components/HowItWorks';
@@ -33,11 +34,16 @@ export default function Home1() {
       {/* 4. Core Feature Deep Dives */}
       <FeatureDeepDives  />
 
+         {/* 7. Candidate Evaluation */}
+      <CandidateEvaluation />
+
       {/* 5. Solutions in Action */}
       <IspSolutionsGrid  />
 
       {/* 6. AI Job Creation */}
       <AiJobCreation />
+
+   
 
       {/* 6. Interactive ROI & Unbilled Revenue Leakage Calculator */}
       {/* <RoiCalculator onOpenDemo={onOpenDemo} /> */}
