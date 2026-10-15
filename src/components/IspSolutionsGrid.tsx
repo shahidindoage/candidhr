@@ -20,7 +20,7 @@ const ITEMS = [
 
 export const IspSolutionsGrid: React.FC = () => {
   return (
-    <section id="solutions" className="relative py-20 sm:py-28 bg-white overflow-hidden">
+    <section id="solutions" className="relative py-20 sm:py-28 bg-white border-b border-slate-200 overflow-hidden">
       <div
         aria-hidden="true"
         className="absolute -top-32 left-1/2 -translate-x-1/2 w-[680px] h-[360px] bg-gradient-to-b from-[#7076F2]/12 to-transparent blur-3xl pointer-events-none"
