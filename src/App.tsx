@@ -16,7 +16,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#F8F9FB] text-[#353F4F] font-sans antialiased">
+    <div className="min-h-screen flex flex-col bg-[#110b2d] text-[#353F4F] font-sans antialiased">
       {/* Top Header Navigation */}
       <Navbar onOpenDemo={handleOpenDemo} />
 

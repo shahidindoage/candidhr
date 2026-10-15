@@ -1,9 +1,11 @@
 import { Hero } from '../components/Hero';
+import { LogoMarquee } from '../components/LogoMarquee';
 import { StatsBanner } from '../components/StatsBanner';
 import { FeatureDeepDives } from '../components/FeatureDeepDives';
 import { IspSolutionsGrid } from '../components/IspSolutionsGrid';
 import { RoiCalculator } from '../components/RoiCalculator';
 import { WhyNetzur } from '../components/WhyNetzur';
+import { HowItWorks } from '../components/HowItWorks';
 import { CustomerSpotlight } from '../components/CustomerSpotlight';
 import { ResourcesSection } from '../components/ResourcesSection';
 import { CtaBanner } from '../components/CtaBanner';
@@ -15,8 +17,14 @@ export default function Home1() {
       {/* 1. Hero Experience with Interactive ISP SaaS Dashboard */}
       <Hero />
 
+      {/* 1.5. Trusted Client Logos Marquee */}
+      <LogoMarquee />
+
       {/* 2. Why ISPs Choose Netzur */}
       <WhyNetzur />
+
+      {/* 3. How It All Works Together */}
+      <HowItWorks />
 
       {/* 3. Enterprise Stats & Trusted Operators Banner */}
       {/* <StatsBanner /> */}

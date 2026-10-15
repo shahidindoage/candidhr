@@ -10,7 +10,7 @@
   body {
     font-family: var(--font-sans);
     color: #353F4F;
-    background-color: #F8F9FB;
+    background-color: #110b2d;
   }
 
   h1, h2, h3, h4, h5, h6, .font-heading {
@@ -86,6 +86,27 @@
   animation: wordSlideOut 0.48s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
+@keyframes stepSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-step-in {
+  animation: stepSlideIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-step-in {
+    animation: none;
+  }
+}
+
 /* Infinite Marquee Animation with Pause on Hover */
 @keyframes marqueeScroll {
   0% {
@@ -106,6 +127,12 @@
 .animate-marquee:hover,
 .animate-marquee:focus-within {
   animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
 }
 
 /* 3D Flip Card Support */

@@ -120,9 +120,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDemo }) => {
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200">
+    <header className="absolute top-0 inset-x-0 z-50 bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-        
+
         {/* Brand Logo */}
         {/* <Link to="/" className="l2-brand flex items-center gap-3 shrink-0">
           <img 
@@ -132,31 +132,31 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDemo }) => {
           />
           <span>CandidHR.ai</span>
         </Link> */}
-        
-<Link
-  to="/"
-  className="l2-brand flex items-center gap-2.5 shrink-0 cursor-pointer  text-[17px] font-semibold tracking-[-0.025em] text-black no-underline"
->
-  <img
-    src="https://res.cloudinary.com/dx6zonqrt/image/upload/v1791975517/about_logo-If45L9FG_xv0vpy.png"
-    alt="CandidHR.ai Logo"
-    className="h-14 w-auto object-contain"
-  />
-  <span>CandidHR.ai</span>
-</Link>
+
+        <Link
+          to="/"
+          className="l2-brand flex items-center gap-2.5 shrink-0 cursor-pointer  text-[17px] font-semibold tracking-[-0.025em] text-black no-underline"
+        >
+          <img
+            src="https://res.cloudinary.com/dx6zonqrt/image/upload/v1791975517/about_logo-If45L9FG_xv0vpy.png"
+            alt="CandidHR.ai Logo"
+            className="h-14 w-auto object-contain"
+          />
+          <span className='text-white'>CandidHR.ai</span>
+        </Link>
 
 
         {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center gap-1 text-sm font-semibold text-slate-700">
-          
+        <nav className="hidden lg:flex items-center gap-1 text-sm font-semibold text-white/85">
+
           {/* 1. PRODUCT MEGA MENU */}
-          <div 
+          <div
             className="relative"
             onMouseEnter={() => setActiveDropdown('product')}
             onMouseLeave={() => setActiveDropdown(null)}
           >
-            <button className="flex items-center gap-1 px-3.5 py-2 rounded-lg hover:text-[#F13B0A] hover:bg-slate-100 transition-colors">
-             <a href="#hero-section">Home </a>
+            <button className="flex items-center gap-1 px-3.5 py-2  border-b-2 border-transparent text-white/85 hover:text-[#937ae7] hover:border-[#937ae7]  transition-colors">
+              <a href="#hero-section">Home </a>
             </button>
 
             {/* {activeDropdown === 'product' && (
@@ -192,13 +192,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDemo }) => {
           </div>
 
           {/* 2. SOLUTIONS MEGA MENU */}
-          <div 
+          <div
             className="relative"
             onMouseEnter={() => setActiveDropdown('solutions')}
             onMouseLeave={() => setActiveDropdown(null)}
           >
-            <button className="flex items-center gap-1 px-3.5 py-2 rounded-lg hover:text-[#F13B0A] hover:bg-slate-100 transition-colors">
-              <a href="#features">Features</a> 
+         <button className="flex items-center gap-1 px-3.5 py-2  border-b-2 border-transparent text-white/85 hover:text-[#937ae7] hover:border-[#937ae7]  transition-colors">
+              <a href="#features">Features</a>
             </button>
 
             {/* {activeDropdown === 'solutions' && (
@@ -235,13 +235,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDemo }) => {
           </div>
 
           {/* 3. SERVICES PARENT / CHILD MEGA MENU */}
-          <div 
+          <div
             className="relative"
             onMouseEnter={() => { setActiveDropdown('services'); setActiveServiceIdx(0); }}
             onMouseLeave={() => setActiveDropdown(null)}
           >
-            <button className={`flex items-center gap-1 px-3.5 py-2 rounded-lg transition-colors ${activeDropdown === 'services' ? 'text-[#F13B0A] bg-slate-100' : 'hover:text-[#F13B0A] hover:bg-slate-100'}`}>
-             <a href="#solutions">Solution</a> 
+            <button className="flex items-center gap-1 px-3.5 py-2  border-b-2 border-transparent text-white/85 hover:text-[#937ae7] hover:border-[#937ae7]  transition-colors">
+              <a href="#solutions">Solution</a>
             </button>
 
             {/* {activeDropdown === 'services' && (
@@ -364,13 +364,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDemo }) => {
           <Link to="/pricing" className="px-3.5 py-2 rounded-lg hover:text-[#F13B0A] hover:bg-slate-100 transition-colors">Pricing</Link> */}
 
           {/* COMPANY DROPDOWN */}
-          <div 
+          <div
             className="relative"
             onMouseEnter={() => setActiveDropdown('company')}
             onMouseLeave={() => setActiveDropdown(null)}
           >
-            <button className="flex items-center gap-1 px-3.5 py-2 rounded-lg hover:text-[#F13B0A] hover:bg-slate-100 transition-colors">
-              <a href="#why-netzur">Why CandidHR</a> 
+           <button className="flex items-center gap-1 px-3.5 py-2  border-b-2 border-transparent text-white/85 hover:text-[#937ae7] hover:border-[#937ae7]  transition-colors">
+              <a href="#why-netzur">Why CandidHR</a>
             </button>
 
             {/* {activeDropdown === 'company' && (
@@ -383,13 +383,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDemo }) => {
           </div>
 
           {/* RESOURCES DROPDOWN */}
-          <div 
+          <div
             className="relative"
             onMouseEnter={() => setActiveDropdown('resources')}
             onMouseLeave={() => setActiveDropdown(null)}
           >
-            <button className="flex items-center gap-1 px-3.5 py-2 rounded-lg hover:text-[#F13B0A] hover:bg-slate-100 transition-colors">
-              <a href="#results">Results</a> 
+       <button className="flex items-center gap-1 px-3.5 py-2  border-b-2 border-transparent text-white/85 hover:text-[#937ae7] hover:border-[#937ae7]  transition-colors">
+              <a href="#results">Results</a>
             </button>
 
             {/* {activeDropdown === 'resources' && (
@@ -415,9 +415,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDemo }) => {
 
           <Link
 
-            to="#"  
-            className="inline-flex items-center justify-center gap-2 bg-[#111827] hover:bg-black text-white font-semibold py-2.5 px-5 rounded-full shadow-md hover:shadow-lg mb-6 md:m-0"
-            // className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-[#F13B0A]  text-white text-xs font-semibold hover:bg-[#d43105] active:scale-[0.98] transition-all shadow-sm"
+            to="#"
+            className="inline-flex items-center justify-center gap-2 bg-[#937AE7] hover:bg-[#462ec8] text-white font-semibold py-2.5 px-5 rounded-full shadow-md hover:shadow-lg mb-6 md:m-0"
+          // className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-[#F13B0A]  text-white text-xs font-semibold hover:bg-[#d43105] active:scale-[0.98] transition-all shadow-sm"
 
           >
             <span>Book a Demo</span>
@@ -429,7 +429,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDemo }) => {
         <div className="flex lg:hidden items-center gap-2">
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="p-2 rounded-lg text-slate-700 hover:bg-slate-100"
+            className="p-2 rounded-lg text-white hover:bg-white/10"
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -440,16 +440,16 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDemo }) => {
       {isMobileMenuOpen && (
         <div className="lg:hidden absolute inset-x-0 top-full z-40 bg-white border-t border-slate-200 flex flex-col h-[calc(100dvh-5rem)] animate-in fade-in slide-in-from-top-2 duration-150">
           <div className="flex-1 overflow-y-auto px-4 pt-2 pb-6 overscroll-contain">
-          {/* PRODUCT */}
-          <div className="border-b border-slate-100">
-            <button
-              onClick={() => toggleMobileSection('product')}
-              className="w-full flex items-center justify-between py-3.5 px-2 text-sm font-semibold text-slate-800"
-            >
-             <a href="#hero-section">Home </a>
-            
-            </button>
-            {/* {mobileSection === 'product' && (
+            {/* PRODUCT */}
+            <div className="border-b border-slate-100">
+              <button
+                onClick={() => toggleMobileSection('product')}
+                className="w-full flex items-center justify-between py-3.5 px-2 text-sm font-semibold text-slate-800"
+              >
+                <a href="#hero-section">Home </a>
+
+              </button>
+              {/* {mobileSection === 'product' && (
               <div className="pb-3 pl-2 space-y-0.5 animate-in fade-in slide-in-from-top-1 duration-150">
                 {productFeatures.map((item, idx) => (
                   <a key={idx} href={item.href} onClick={() => setIsMobileMenuOpen(false)} className="block py-2 px-2 text-[13px] font-medium text-slate-600 hover:text-[#F13B0A] border-l-2 border-slate-100 hover:border-[#F13B0A] ml-2">
@@ -461,18 +461,18 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDemo }) => {
                 </a>
               </div>
             )} */}
-          </div>
+            </div>
 
-          {/* SOLUTIONS */}
-          <div className="border-b border-slate-100">
-            <button
-              onClick={() => toggleMobileSection('solutions')}
-              className="w-full flex items-center justify-between py-3.5 px-2 text-sm font-semibold text-slate-800"
-            >
-              
-              <a href="#features">Features</a> 
-            </button>
-            {/* {mobileSection === 'solutions' && (
+            {/* SOLUTIONS */}
+            <div className="border-b border-slate-100">
+              <button
+                onClick={() => toggleMobileSection('solutions')}
+                className="w-full flex items-center justify-between py-3.5 px-2 text-sm font-semibold text-slate-800"
+              >
+
+                <a href="#features">Features</a>
+              </button>
+              {/* {mobileSection === 'solutions' && (
               <div className="pb-3 pl-2 space-y-0.5 animate-in fade-in slide-in-from-top-1 duration-150">
                 {solutionsList.map((item, idx) => (
                   <a key={idx} href="#solutions" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center gap-2.5 py-2 px-2 ml-2 border-l-2 border-slate-100">
@@ -482,17 +482,17 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDemo }) => {
                 ))}
               </div>
             )} */}
-          </div>
+            </div>
 
-          {/* SERVICES */}
-          <div className="border-b border-slate-100">
-            <button
-              onClick={() => toggleMobileSection('services')}
-              className="w-full flex items-center justify-between py-3.5 px-2 text-sm font-semibold text-slate-800"
-            >
-               <a href="#solutions">Solution</a> 
-            </button>
-            {/* {mobileSection === 'services' && (
+            {/* SERVICES */}
+            <div className="border-b border-slate-100">
+              <button
+                onClick={() => toggleMobileSection('services')}
+                className="w-full flex items-center justify-between py-3.5 px-2 text-sm font-semibold text-slate-800"
+              >
+                <a href="#solutions">Solution</a>
+              </button>
+              {/* {mobileSection === 'services' && (
               <div className="pb-3 space-y-1 animate-in fade-in slide-in-from-top-1 duration-150">
                 {servicesCategories.map((cat, idx) => {
                   const Icon = cat.icon;
@@ -532,49 +532,49 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDemo }) => {
                 })}
               </div>
             )} */}
-          </div>
+            </div>
 
-          {/* <div className="space-y-1 border-b border-slate-100 py-2">
+            {/* <div className="space-y-1 border-b border-slate-100 py-2">
             <Link to="/integrations" onClick={() => setIsMobileMenuOpen(false)} className="block py-2.5 px-2 text-sm font-semibold text-slate-800">Integrations</Link>
             <Link to="/pricing" onClick={() => setIsMobileMenuOpen(false)} className="block py-2.5 px-2 text-sm font-semibold text-slate-800">Pricing</Link>
           </div> */}
 
-          {/* COMPANY */}
-          <div className="border-b border-slate-100">
-            <button
-              onClick={() => toggleMobileSection('company')}
-              className="w-full flex items-center justify-between py-3.5 px-2 text-sm font-semibold text-slate-800"
-            >
-              <a href="#why-netzur">Why CandidHR</a> 
-              
-              {/* <ChevronDown className={`w-4 h-4 text-slate-400 transition-transform duration-200 ${mobileSection === 'company' ? 'rotate-180 text-[#F13B0A]' : ''}`} /> */}
-            </button>
-            {/* {mobileSection === 'company' && (
+            {/* COMPANY */}
+            <div className="border-b border-slate-100">
+              <button
+                onClick={() => toggleMobileSection('company')}
+                className="w-full flex items-center justify-between py-3.5 px-2 text-sm font-semibold text-slate-800"
+              >
+                <a href="#why-netzur">Why CandidHR</a>
+
+                {/* <ChevronDown className={`w-4 h-4 text-slate-400 transition-transform duration-200 ${mobileSection === 'company' ? 'rotate-180 text-[#F13B0A]' : ''}`} /> */}
+              </button>
+              {/* {mobileSection === 'company' && (
               <div className="pb-3 pl-2 space-y-0.5">
                 <a href="/who-we-are" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 px-2 ml-2 text-[13px] font-medium text-slate-600 border-l-2 border-slate-100">Who We Are</a>
                 <a href="/join-the-team" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 px-2 ml-2 text-[13px] font-medium text-slate-600 border-l-2 border-slate-100">Join the Team</a>
                 <a href="/contact-us" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 px-2 ml-2 text-[13px] font-medium text-slate-600 border-l-2 border-slate-100">Contact</a>
               </div>
             )} */}
-          </div>
+            </div>
 
-          {/* RESOURCES */}
-          <div className="border-b border-slate-100">
-            <button
-              onClick={() => toggleMobileSection('resources')}
-              className="w-full flex items-center justify-between py-3.5 px-2 text-sm font-semibold text-slate-800"
-            >
-             <a href="#results">Results</a> 
-              {/* <ChevronDown className={`w-4 h-4 text-slate-400 transition-transform duration-200 ${mobileSection === 'resources' ? 'rotate-180 text-[#F13B0A]' : ''}`} /> */}
-            </button>
-            {/* {mobileSection === 'resources' && (
+            {/* RESOURCES */}
+            <div className="border-b border-slate-100">
+              <button
+                onClick={() => toggleMobileSection('resources')}
+                className="w-full flex items-center justify-between py-3.5 px-2 text-sm font-semibold text-slate-800"
+              >
+                <a href="#results">Results</a>
+                {/* <ChevronDown className={`w-4 h-4 text-slate-400 transition-transform duration-200 ${mobileSection === 'resources' ? 'rotate-180 text-[#F13B0A]' : ''}`} /> */}
+              </button>
+              {/* {mobileSection === 'resources' && (
               <div className="pb-3 pl-2 space-y-0.5">
                 <a href="/blog" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 px-2 ml-2 text-[13px] font-medium text-slate-600 border-l-2 border-slate-100">Blog</a>
                 <a href="#kb" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 px-2 ml-2 text-[13px] font-medium text-slate-600 border-l-2 border-slate-100">Knowledge Base</a>
                 <a href="/rebranding" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 px-2 ml-2 text-[13px] font-medium text-slate-600 border-l-2 border-slate-100">Rebranding</a>
               </div>
             )} */}
-          </div>
+            </div>
           </div>
 
           <div className="shrink-0 border-t border-slate-200 bg-white p-4 flex flex-col gap-2">

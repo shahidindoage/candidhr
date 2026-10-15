@@ -1,255 +1,154 @@
-import React, { useState } from 'react';
-import { 
-  Layers, 
-  CreditCard, 
-  Users, 
-  Ticket, 
-  Cpu, 
-  MapPin, 
-  ArrowRight,
-  Check
-} from 'lucide-react';
+import React, { useEffect, useState } from "react";
 
-interface WhyNetzurProps {
-  onOpenDemo?: () => void;
-}
-
-interface WhyCardData {
-  id: string;
-  category: string;
-  title: string;
-  metric: string;
-  metricLabel: string;
-  teaser: string;
-  icon: React.ElementType;
-  bgImage: string;
-  specDetails: {
-    subtitle: string;
-    points: string[];
-  };
-}
-
-const WHY_CARDS: WhyCardData[] = [
+const FEATURES = [
   {
-    id: 'operations',
-    category: 'AI SOURCING',
-    title: 'Source the Right Candidates',
-    metric: '3B',
-    metricLabel: 'Talent Pool',
-    teaser: 'Reach beyond applicants with access to a worldwide talent pool and invite the candidates who best match each job.',
-    icon: Layers,
-    bgImage: 'https://res.cloudinary.com/dx6zonqrt/image/upload/v1791897884/pexels-tima-miroshnichenko-5439152_srnqbt.jpg',
-    specDetails: {
-      subtitle: 'AI-Powered Candidate Sourcing',
-      points: [
-        'Create a job in seconds with an AI-written job description',
-        'Invite best-matched candidates from a worldwide talent pool',
-        'Search for profiles using Deep Search in plain language',
-      ],
-    },
+    title: "Job creation in seconds",
+    description: "AI drafts the job description for you to review.",
   },
   {
-    id: 'billing',
-    category: 'RESUME SCREENING',
-    title: 'Find the Matches. Skip the Noise.',
-    metric: 'AI',
-    metricLabel: 'Job Matching',
-    teaser: 'Evaluate every resume against job requirements, rank candidates by fit, and see the reasons behind every match.',
-    icon: CreditCard,
-    bgImage: 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=800&q=80',
-    specDetails: {
-      subtitle: 'Resume Screening & Ranking',
-      points: [
-        'Compare resumes against skills, experience and job criteria',
-        'See which requirements each candidate meets',
-        'Spot potential gaps before the interview',
-      ],
-    },
+    title: "AI resume screening",
+    description: "Every candidate ranked against the job.",
   },
   {
-    id: 'crm',
-    category: 'ASSESSMENTS',
-    title: 'Test What a Resume Can’t Prove',
-    metric: '24/7',
-    metricLabel: 'Flexible Completion',
-    teaser: 'Send role-relevant assessments candidates can complete on their own schedule, with results scored automatically.',
-    icon: Users,
-    bgImage: 'https://images.unsplash.com/photo-1556740758-90de374c12ad?auto=format&fit=crop&w=800&q=80',
-    specDetails: {
-      subtitle: 'Role-Relevant Candidate Assessments',
-      points: [
-        'Technical, coding, aptitude and domain assessments',
-        'Communication tests to assess candidate skills',
-        'AI proctoring available for assessments',
-      ],
-    },
+    title: "Job description matching",
+    description: "See which requirements each candidate meets.",
   },
   {
-    id: 'ticketing',
-    category: 'VIDEO INTERVIEWS',
-    title: 'The First Round, Before Your Calendar',
-    metric: '24×7',
-    metricLabel: 'Automated Interviews',
-    teaser: 'Automated video interviews let candidates respond on their schedule while CandidHR.ai transcribes and analyses their answers.',
-    icon: Ticket,
-    bgImage: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80',
-    specDetails: {
-      subtitle: 'Automated Video Interviewing',
-      points: [
-        'Ask introductory and role-specific questions',
-        'Transcribe and analyse candidate answers',
-        'Review interview scores and AI recommendations',
-      ],
-    },
+    title: "Bulk resume upload",
+    description: "Screen the resumes you already have.",
   },
   {
-    id: 'acs',
-    category: 'CANDIDATE RANKING',
-    title: 'Know Who Deserves the Next Conversation',
-    metric: '360°',
-    metricLabel: 'Candidate View',
-    teaser: 'Bring job match, assessment and video interview signals together in one prioritised shortlist with evidence behind the ranking.',
-    icon: Cpu,
-    bgImage: 'https://res.cloudinary.com/dx6zonqrt/image/upload/v1791897768/pexels-august-de-richelieu-4427923_op2tev.jpg',
-    specDetails: {
-      subtitle: 'One Ranked Candidate View',
-      points: [
-        'Combine resume and job-match results',
-        'Include assessment and coding scores',
-        'Use video interview analysis to inform decisions',
-      ],
-    },
+    title: "Red-flag detection",
+    description: "Surface deal-breakers before the first call.",
   },
   {
-    id: 'map',
-    category: 'DEEP SEARCH',
-    title: 'Describe the Person. Find the Profiles.',
-    metric: '3B',
-    metricLabel: 'Worldwide Talent Pool',
-    teaser: 'Search a worldwide talent pool in plain language to discover candidates who match the person and skills you need.',
-    icon: MapPin,
-    bgImage: 'https://res.cloudinary.com/dx6zonqrt/image/upload/v1791897533/pexels-ekaterina-bolovtsova-6077055_fyqgrx.jpg',
-    specDetails: {
-      subtitle: 'Natural-Language Candidate Search',
-      points: [
-        'Describe the experience and skills you need',
-        'Discover relevant candidate profiles',
-        'Invite the best matches directly to a job',
-      ],
-    },
+    title: "Introduction video",
+    description: "Candidates introduce themselves on video.",
+  },
+  {
+    title: "AI-proctored assessments",
+    description: "Run assessments with AI proctoring on.",
+  },
+  {
+    title: "Skills & aptitude tests",
+    description: "Technical, aptitude and domain tests.",
+  },
+  {
+    title: "AI video interviews",
+    description: "First rounds on the candidate's schedule.",
+  },
+  {
+    title: "Candidate communication",
+    description: "Keep candidates informed at each step.",
+  },
+  {
+    title: "Workflow automation",
+    description: "Move candidates between stages automatically.",
+  },
+  {
+    title: "Roles & permissions",
+    description: "Control who on your team sees what.",
   },
 ];
 
-export const WhyNetzur: React.FC<WhyNetzurProps> = ({ onOpenDemo }) => {
-  const [flippedCardId, setFlippedCardId] = useState<string | null>(null);
+const VISIBLE = 2;
 
-  const toggleFlip = (id: string) => {
-    setFlippedCardId(prev => (prev === id ? null : id));
-  };
+const cardStyle = (offset: number) => {
+  const side = Math.abs(offset);
 
-  const marqueeCards = [...WHY_CARDS, ...WHY_CARDS];
+  if (offset === 0) return "z-30 opacity-100 scale-100 translate-x-0 rotate-y-0";
+
+  if (side === 1) {
+    return offset > 0
+      ? "z-20 opacity-55 scale-[0.9] translate-x-[86%] -rotate-y-[13deg]"
+      : "z-20 opacity-55 scale-[0.9] -translate-x-[86%] rotate-y-[13deg]";
+  }
+
+  if (side === 2) {
+    return offset > 0
+      ? "z-10 opacity-20 scale-[0.8] translate-x-[158%] -rotate-y-[24deg]"
+      : "z-10 opacity-20 scale-[0.8] -translate-x-[158%] rotate-y-[24deg]";
+  }
+
+  return "z-0 opacity-0 scale-[0.72] pointer-events-none";
+};
+
+const offsetFor = (index: number, activeIdx: number, total: number) => {
+  const half = total / 2;
+  let offset = index - activeIdx;
+
+  if (offset > half) offset -= total;
+  if (offset < -half) offset += total;
+
+  return offset;
+};
+
+export const WhyNetzur: React.FC = () => {
+  const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
+
+  useEffect(() => {
+    if (paused) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const id = setInterval(() => {
+      setActive((prev) => (prev + 1) % FEATURES.length);
+    }, 5000);
+
+    return () => clearInterval(id);
+  }, [paused]);
 
   return (
-    <section 
-      id="why-netzur" 
-      className="py-16 sm:py-10 bg-white border-b border-slate-200 overflow-hidden relative select-none"
+    <section
+      id="why-netzur"
+      className="relative py-20 sm:py-28 bg-[#F8F9FB] overflow-hidden"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
     >
-      {/* Infinite Marquee Container */}
-      <div className="animate-marquee flex items-center gap-6 sm:gap-8 py-10">
-        {marqueeCards.map((card, index) => {
-          const Icon = card.icon;
-          const isFlipped = flippedCardId === `${card.id}-${index}`;
-          const isElevated = index % 2 === 1;
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-14">
+        <div className="text-xs font-extrabold uppercase tracking-widest text-transparent bg-clip-text bg-gradient-to-br from-[#7076F2] to-[#ba83ece8]">
+          Core Platform Features
+        </div>
+        <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-[#110b2d] tracking-tight mt-2">
+          Twelve capabilities, end to end
+        </h2>
+      </div>
 
-          return (
-            <div
-              key={`${card.id}-${index}`}
-              className={`card-perspective w-[280px] sm:w-[320px] md:w-[340px] h-[480px] shrink-0 transition-transform duration-500 ${
-                isElevated ? '-translate-y-6' : 'translate-y-2'
-              }`}
-              onMouseEnter={() => setFlippedCardId(`${card.id}-${index}`)}
-              onMouseLeave={() => setFlippedCardId(null)}
-              onClick={() => toggleFlip(`${card.id}-${index}`)}
-            >
-              <div 
-                className={`card-preserve-3d relative w-full h-full rounded-3xl transition-transform duration-700 cursor-pointer shadow-lg hover:shadow-2xl ${
-                  isFlipped ? '[transform:rotateY(180deg)]' : ''
-                }`}
+      <div className="relative [perspective:1600px]">
+        <div className="relative h-[330px] sm:h-[300px] max-w-5xl mx-auto px-4 sm:px-6">
+          {FEATURES.map((feature, idx) => {
+            const offset = offsetFor(idx, active, FEATURES.length);
+
+            return (
+              <button
+                key={feature.title}
+                onClick={() => setActive(idx)}
+                aria-hidden={Math.abs(offset) > VISIBLE}
+                tabIndex={Math.abs(offset) > VISIBLE ? -1 : 0}
+                aria-label={feature.title}
+                style={{ transitionDuration: "700ms" }}
+                className={`absolute left-1/2 top-1/2 w-[min(86vw,480px)] h-full -ml-[min(43vw,240px)] -mt-[165px] sm:-mt-[150px] rounded-3xl bg-white border border-slate-200/80 shadow-2xl shadow-slate-900/10 p-8 sm:p-10 text-left flex flex-col justify-center cursor-pointer transition-[transform,opacity] ease-[cubic-bezier(0.22,1,0.36,1)] [transform-style:preserve-3d] will-change-transform ${cardStyle(offset)}`}
               >
-                {/* FRONT OF CARD */}
-                <div className="card-backface-hidden absolute inset-0 w-full h-full rounded-3xl overflow-hidden bg-slate-900 border border-slate-100 flex flex-col justify-end p-6 sm:p-8">
-                  <img
-                    src={card.bgImage}
-                    alt={card.title}
-                    referrerPolicy="no-referrer"
-                    className="absolute inset-0 w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-700"
-                  />
-                  
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
-
-                  <div className="relative z-10">
-                    <span className="text-[11px] font-mono font-bold text-orange-400 tracking-widest uppercase mb-1 block">
-                      {card.category}
-                    </span>
-                    <h3 className="font-heading font-extrabold text-2xl sm:text-3xl text-white tracking-tight leading-snug">
-                      {card.title}
-                    </h3>
-                  </div>
-                </div>
-
-                {/* BACK OF CARD */}
-                <div 
-                  className="card-backface-hidden [transform:rotateY(180deg)] absolute inset-0 w-full h-full rounded-3xl overflow-hidden bg-gradient-to-b from-[#1E2532] to-[#121620] border-2 border-orange-500/50 p-6 sm:p-8 flex flex-col justify-between text-white"
+                <span
+                  aria-hidden="true"
+                  className="absolute top-5 right-7 font-heading font-extrabold text-5xl leading-none text-transparent bg-clip-text bg-gradient-to-br from-[#7076F2]/25 to-[#ba83ec]/10 select-none"
                 >
-                  <div className="absolute -top-12 -right-12 w-36 h-36 bg-[#F13B0A]/20 rounded-full blur-2xl pointer-events-none" />
+                  {String(idx + 1).padStart(2, "0")}
+                </span>
 
-                  <div className="relative z-10">
-                    <div className="flex items-center justify-between mb-4">
-                      <span className="px-2.5 py-1 rounded-full text-[10px] font-mono font-bold tracking-widest text-orange-400 bg-orange-950/60 border border-orange-500/30 uppercase">
-                        FEATURE OVERVIEW
-                      </span>
-                      <div className="w-9 h-9 rounded-xl bg-white/10 border border-white/10 flex items-center justify-center text-orange-400">
-                        <Icon className="w-5 h-5" />
-                      </div>
-                    </div>
+                <h3 className="font-heading font-extrabold text-2xl sm:text-[1.75rem] text-[#110b2d] tracking-tight pr-14">
+                  {feature.title}
+                </h3>
+                <p className="text-sm sm:text-base text-slate-600 leading-relaxed mt-3 max-w-sm">
+                  {feature.description}
+                </p>
 
-                    <h4 className="font-heading font-bold text-xl text-white leading-snug">
-                      {card.title}
-                    </h4>
-                    <p className="text-xs font-mono text-orange-200/90 mt-1.5">
-                      {card.specDetails.subtitle}
-                    </p>
+             
+              </button>
+            );
+          })}
+        </div>
 
-                    <div className="mt-6 space-y-3.5">
-                      {card.specDetails.points.map((point, pIdx) => (
-                        <div key={pIdx} className="flex items-start gap-3 text-xs sm:text-sm text-slate-200">
-                          <div className="w-4 h-4 rounded-full bg-emerald-500/20 border border-emerald-400/40 flex items-center justify-center shrink-0 mt-0.5">
-                            <Check className="w-2.5 h-2.5 text-emerald-400 stroke-[3]" />
-                          </div>
-                          <span className="leading-relaxed">{point}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="relative z-10 pt-4 border-t border-white/10">
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        onOpenDemo?.();
-                      }}
-                      className="w-full py-3 px-4 rounded-xl bg-[#F13B0A] hover:bg-[#D93206] text-white text-xs sm:text-sm font-bold tracking-wide shadow-md flex items-center justify-center gap-2 cursor-pointer transition-all active:scale-95"
-                    >
-                      <span>Explore Interactive Demo</span>
-                      <ArrowRight className="w-4 h-4" />
-                    </button>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          );
-        })}
       </div>
     </section>
   );
