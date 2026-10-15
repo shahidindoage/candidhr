@@ -49,6 +49,46 @@ const FEATURES = [
     title: "Roles & permissions",
     description: "Control who on your team sees what.",
   },
+  {
+    title: "Talent pool of 3B candidates",
+    description: "Invite best-matched people who never applied.",
+  },
+  {
+    title: "Auto-invite best matches",
+    description: "Choose how many to invite when you create a job.",
+  },
+  {
+    title: "Advanced Search",
+    description: "Describe who you need and find matching profiles.",
+  },
+  {
+    title: "AI interview analysis",
+    description: "Scores, transcripts and an AI recommendation.",
+  },
+  {
+    title: "Coding tests",
+    description: "Check hands-on skills before the technical round.",
+  },
+  {
+    title: "Agency mode",
+    description: "Manage multiple clients and mandates.",
+  },
+  {
+    title: "WhatsApp integration",
+    description: "Invite and follow up on WhatsApp.",
+  },
+  {
+    title: "White labelling",
+    description: "Your brand on the candidate experience.",
+  },
+  {
+    title: "Job portal integration",
+    description: "Bring in applicants from your job portals.",
+  },
+  {
+    title: "ATS integration",
+    description: "Works alongside the ATS you already use.",
+  },
 ];
 
 const VISIBLE = 2;
@@ -110,7 +150,7 @@ export const WhyNetzur: React.FC = () => {
           Core Platform Features
         </div>
         <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-[#110b2d] tracking-tight mt-2">
-          Twelve capabilities, end to end
+         Complete capabilities, end to end
         </h2>
       </div>
 
